@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!~/Documents/database\ design/project/env/bin python
 import os
 import sys
 
