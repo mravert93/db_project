@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <b><ins> Teams </ins><b>
+      <ol>
+        {% for team in teams %}
+          <li><a href="/team_page?team_name={{team.team_name}}" style="color:inherit">{{team.team_name}}</a></li> 
+        {% endfor %} 
+      </ol>
+  </body>
+</html>

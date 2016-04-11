@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <table border="1">
+      <tr>
+        <td><b>Map Name</b></td>
+        <td><b>Advantage</b></td>
+        <td><b>Map Pool</b></td>
+        <td><b>Game Mode</b></td>
+        <td><b>Competitve</b></td>
+      </tr>
+      {% for map in maps %}
+        <tr>
+          <td>{{map.map_name}}</td>
+          <td>{{map.advantage}}</td>
+          <td>{{map.map_pool}}</td>
+          <td>{{map.game_mode}}</td>
+          <td>{{map.competitive}}</td>
+        </tr>
+      {% endfor %}
+    </table>    
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <b><ins>Team {{ team_name }}</ins></b>
+    <br>
+    <br>
+      <table>
+        <tr>
+          <td><b>First Name</b></td>
+          <td><b>Last Name</b></td>
+          <td><b>Gamertag</b></td>
+          <td><b>Age</b></td>
+          <td><b>Country of Origin</b></td>
+          <td><b>Kill/Death Ratio</b></td>
+          <td><b>Headshot Percentage</b></td>
+          <td><b>Favorite Weapon</b></td>
+        </tr>
+        {% for p in players %}
+          <tr>
+            <td>{{ p.first_name }}</td>
+            <td>{{ p.last_name }}</td>
+            <td>{{ p.gamertag }}</td>
+            <td>{{ p.age }}</td>
+            <td>{{ p.country_of_origin }}</td>
+            <td>{{ p.kdr }}</td>
+            <td>{{ p.headshot_percentage }}</td>
+            <td>{{ p.favorite_weapon }}</td>
+          </tr> 
+        {% endfor %}
+      </table>
+  </body>
+</html>

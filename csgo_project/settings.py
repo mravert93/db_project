@@ -1,4 +1,5 @@
 # Django settings for csgo_project project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -107,7 +108,11 @@ ROOT_URLCONF = 'csgo_project.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'csgo_project.wsgi.application'
 
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_ROOT = os.path.abspath(PROJECT_PATH)
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,7 +124,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.admin',
     'django.contrib.staticfiles',
+    'app',
+    'south',
+    'markdown_deux',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -155,4 +164,5 @@ LOGGING = {
             'propagate': True,
         },
     }
+
 }
