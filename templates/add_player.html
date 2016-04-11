@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <form action="/player" method="post">
+      {% csrf_token %}
+      <label>Player's first name</label>
+      <input type="text" name="first_name" value="{{first_name}}"><br>
+      <label>Player's last name</label>
+      <input type="text" name="last_name" value="{{last_name}}"><br>
+      <label>Player's gamertag</label>
+      <input type="text" name="gamertag" value="{{gamertag}}"><br>
+      <label>Player's team</label>
+      <input type="text" name="team_name" value="{{team_name}}"><br>
+      <label>Player's age</label>
+      <input type="text" name="age" value="{{age}}"><br>
+      <label>Player's country of origin</label>
+      <input type="text" name="country_of_origin" value="{{country_of_origin}}"><br>
+      <label>Player's Kill/Death Ratio</label>
+      <input type="text" name="kdr" value="{{kdr}}"><br>
+      <label>Player's Headshot Percentage</label>
+      <input type="text" name="headshot_percentage" value="{{headshot_percentage}}"><br>
+      <label>Player's Favorite Weapon</label>
+      <input type="text" name="favorite_weapon" value="{{favorite_weapon}}"><br>
+      <input type="submit" value="Add">
+    </form>
+  </body>
+</html>

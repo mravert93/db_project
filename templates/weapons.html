@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <table border="1">
+      <tr>
+        <td><b>Weapon Name</b></td>
+        <td><b>Weapon Class</b></td>
+        <td><b>Price</b></td>
+        <td><b>Magazine Size</b></td>
+        <td><b>Total Bullets</b></td>
+        <td><b>Firing Modes</b></td>
+        <td><b>Used By</b></td>
+      </tr>
+      {% for weapon in weapons %}
+        <tr>
+          <td>{{weapon.weapon_name}}</td>
+          <td>{{weapon.weapon_class}}</td>
+          <td>{{weapon.price}}</td>
+          <td>{{weapon.magazine_size}}</td>
+          <td>{{weapon.total_bullets}}</td>
+          <td>{{weapon.firing_modes}}</td>
+          <td>{{weapon.used_by}}</td>
+        </tr>
+      {% endfor %}
+    </table>    
+  </body>
+</html>

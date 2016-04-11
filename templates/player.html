@@ -1,0 +1,24 @@
+<html>
+  <body>
+    {{ player.first_name }} {{ player.last_name }}
+    <br>
+    Gamertag: {{ player.gamertag }}
+    <br>
+    Plays for team: <a href="/team_page?team_name={{player.team_name.team_name}}" style="color:inherited">{{ player.team_name.team_name }}</a>
+    <br>
+    <br>
+    <b>Stats</b>
+    <table>
+      <tr>
+        <td>Kill Death Ratio</td>
+        <td>Headshot Percentage</td>
+        <td>Favorite Weapon</td>
+      </tr>
+      <tr>
+        <td>{{ player.kdr }}</td>
+        <td>{{ player.headshot_percentage }}</td>
+        <td>{{ player.favorite_weapon.weapon_name }}</td>
+      </tr>
+    </table>
+  </body>
+</html>
