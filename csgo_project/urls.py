@@ -18,4 +18,9 @@ urlpatterns = patterns('',
     url(r'^maps', 'app.views.maps'),
     url(r'^teams', 'app.views.teams'),
     url(r'^team_page', 'app.views.team_page'),
+    url(r'^players', 'app.views.players'),
+    url(r'^weapons', 'app.views.weapons'),
+    url(r'^home', 'app.views.index'),
+
+
 )
