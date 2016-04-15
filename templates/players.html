@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <table border="1">
+      <tr>
+        <td><b>First Name</b></td>
+        <td><b>Last Name</b></td>
+        <td><b>Gamertag</b></td>
+        <td><b>Team Name</b></td>
+        <td><b>Age</b></td>
+        <td><b>Country of Origin</b></td>
+        <td><b>KDR</b></td>
+        <td><b>Headshot Percentage</b></td>
+        <td><b>Favorite Weapon</b></td>
+        <td><b>Best Map</b></td>
+        <td><b>Worst Map</b></td>
+      </tr>
+      {% for player in players %}
+        <tr>
+          <td>{{player.first_name}}</td>
+          <td>{{player.last_name}}</td>
+          <td>{{player.gamertag}}</td>
+          <td><a href="/team_page?team_name={{player.team_name}}" style="color:inherit">{{player.team_name}}</a></td>
+          <td>{{player.age}}</td>
+          <td>{{player.country_of_origin}}</td>
+          <td>{{player.kdr}}</td>
+          <td>{{player.headshot_percentage}}</td>
+          <td><a href="/weapons" style="color:inherit">{{player.favorite_weapon}}</a></td>
+          <td><a href="/maps" style="color:inherit">{{player.best_map}}</a></td>
+          <td><a href="/maps" style="color:inherit">{{player.worst_map}}</a></td>
+        </tr>
+      {% endfor %}
+    </table>    
+  </body>
+</html>
