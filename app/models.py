@@ -28,11 +28,11 @@ class Players(models.Model):
     team_name = models.ForeignKey('Teams', db_column='team_name', blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
     country_of_origin = models.CharField(max_length=45, blank=True)
-    kdr = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
-    headshot_percentage = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    kdr = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    headshot_percentage = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     favorite_weapon = models.ForeignKey('Weapons', db_column='favorite_weapon', blank=True, null=True)
-    best_map = models.ForeignKey(Maps, db_column='best_map', blank=True, null=True, related_name='players_best_map')
-    worst_map = models.ForeignKey(Maps, db_column='worst_map', blank=True, null=True, related_name='players_worst_map')
+    best_map = models.ForeignKey('Maps', db_column='best_map', blank=True, null=True, related_name='players_best_map')
+    worst_map = models.ForeignKey('Maps', db_column='worst_map', blank=True, null=True, related_name='players_worst_map')
     class Meta:
         managed = False
         db_table = 'Players'
