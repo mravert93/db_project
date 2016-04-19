@@ -81,3 +81,12 @@ def add_player(request):
   template = loader.get_template('add_player.html')
   data = RequestContext(request, context)
   return HttpResponse(template.render(data))
+
+def players(request):
+  players = list(Players.objects.all())
+  sorted_players = sorted(players, key=lambda player: player.last_name)
+  context = {}
+  context['players'] = sorted_players
+  template = loader.get_template('players.html')
+  data = RequestContext(request, context)
+  return HttpResponse(template.render(data))

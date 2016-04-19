@@ -21,4 +21,6 @@ urlpatterns = patterns('',
     url(r'^player', 'app.views.player'),
     url(r'^weapons', 'app.views.weapons'),
     url(r'^add_player', 'app.views.add_player'),
+    url(r'^home', 'app.views.index'),
+    url(r'^players', 'app.views.players'),
 )
