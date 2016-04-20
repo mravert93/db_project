@@ -53,7 +53,7 @@ $(document).ready(function () {
         country = $(this).closest('tr').children('td:eq(5)').text();
         kdr = $(this).closest('tr').children('td:eq(6)').text();
         hsPercent = $(this).closest('tr').children('td:eq(7)').text();
-        facWeapon = $(this).closest('tr').children('td:eq(8)').text();
+        favWeapon = $(this).closest('tr').children('td:eq(8)').text();
         bestMap = $(this).closest('tr').children('td:eq(9)').text();
         worstMap = $(this).closest('tr').children('td:eq(10)').text();
     });
@@ -69,10 +69,10 @@ $(document).ready(function () {
             "age": age.val(),
             "country": country.val(),
             "kdr": kdr.val(),
-            "hsPercent": hsp.val(),
-            "favWeapon": fweapon.val(),
-            "bestMap": bmap.val(),
-            "worstMap": wmap.val()
+            "hsPercent": hsPercent.val(),
+            "favWeapon": favWeapon.val(),
+            "bestMap": bestMap.val(),
+            "worstMap": worstMap.val()
         };
         console.log(updatedPlayer);
         $.ajax({
