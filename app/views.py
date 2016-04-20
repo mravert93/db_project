@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.template import loader
+from django.utils import simplejson
 from models import Maps, Teams, Players, Weapons
 
 def index(request):
@@ -33,6 +34,15 @@ def team_page(request):
   context['team_name'] = team_name
   context['players'] = players
   template = loader.get_template('team_page.html')
+  data = RequestContext(request, context)
+  return HttpResponse(template.render(data))
+
+def players(request):
+  players = list(Players.objects.all())
+  sorted_players = sorted(players, key=lambda player: player.last_name)
+  context = {}
+  context['players'] = sorted_players
+  template = loader.get_template('players.html')
   data = RequestContext(request, context)
   return HttpResponse(template.render(data))
 
@@ -77,16 +87,41 @@ def weapons(request):
   return HttpResponse(template.render(data))
 
 def add_player(request):
-  context = {}
-  template = loader.get_template('add_player.html')
-  data = RequestContext(request, context)
-  return HttpResponse(template.render(data))
+  first = request.GET.get('first', '')
+  last = request.GET.get('last', '')
+  player_gamertag = request.GET.get('gamertag', '')
+  team_name = request.GET.get('teamName', '')
+  age = request.GET.get('age', '')
+  country = request.GET.get('country', '')
+  kdr = request.GET.get('kdr', '')
+  headshot = request.GET.get('hsPercent', '')
+  fav_weapon = request.GET.get('favWeapon', '')
+  best_map = request.GET.get('bestMap', '')
+  worst_map = request.GET.get('worstMap', '')
+  team = Teams.objects.get(team_name=team_name)
+  weapon = Weapons.objects.get(weapon_name=fav_weapon)
+  b_map = Maps.objects.get(map_name=best_map)
+  w_map = Maps.objects.get(map_name=worst_map)
+  new_p = Players(first_name=first,
+                  last_name=last,
+                  gamertag=player_gamertag,
+                  team_name=team,
+                  age=age,
+                  country_of_origin=country,
+                  kdr=kdr,
+                  headshot_percentage=headshot,
+                  favorite_weapon=weapon,
+                  best_map=b_map,
+                  worst_map=w_map)
+  new_p.save()
+  context = {"success": True}
+  data = simplejson.dumps(context)
+  return HttpResponse(data, content_type='application/json')
 
-def players(request):
-  players = list(Players.objects.all())
-  sorted_players = sorted(players, key=lambda player: player.last_name)
-  context = {}
-  context['players'] = sorted_players
-  template = loader.get_template('players.html')
-  data = RequestContext(request, context)
-  return HttpResponse(template.render(data))
+def delete_player(request):
+  gamertag = request.GET.get('gamertag', '')
+  player = Players.objects.get(gamertag=gamertag)
+  player.delete()
+  context = {"success": True}
+  data = simplejson.dumps(context)
+  return HttpResponse(data, content_type='application/json')  
