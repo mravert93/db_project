@@ -3,14 +3,15 @@
 <html lang="en">
 
 <head>
+    {% load staticfiles %}
     <meta charset='utf-8' />
-    <title>CSGO DB Homepage</title>
-    <link rel="stylesheet" href="homepage.css" />
+    <title>CSGO DB Weapons Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{% static "weapons.js" %}"></script>    
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
@@ -62,11 +63,11 @@
                             <th><b>Total Bullets</b></th>
                             <th><b>Firing Modes</b></th>
                             <th><b>Used By</b></th>
-                            <th>
-                                <button type="button" class="btn btn-success pull-right" id="addWeapon" aria-label="Add">
-                                    Add Weapon
-                                </button>
-                            </th>
+                            
+                            <button type="button" class="btn btn-success pull-right" id="addWeapon" aria-label="Add" data-toggle="modal" data-target="#addWeaponModal">
+                                Add Weapon
+                            </button>
+                            
                         </tr>
                     </thead>
                     <tbody id="weapons">
@@ -101,7 +102,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        Are you sure?
+                        Are you sure you want to remove this weapon from the Weapons table?
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn btn-success" id="confirmremove">Delete</button>
@@ -110,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div id="addCourse" class="modal fade" role="dialog">
+        <div id="addWeaponModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
