@@ -118,10 +118,42 @@ def add_player(request):
   data = simplejson.dumps(context)
   return HttpResponse(data, content_type='application/json')
 
+def edit_player(request):
+  first = request.GET.get('first', 'first_name')
+  last = request.GET.get('last', 'last_name')
+  player_gamertag = request.GET.get('gamertag', 'gamertag')
+  team_name = request.GET.get('teamName', 'team_name')
+  age = request.GET.get('age', 'age')
+  country = request.GET.get('country', 'country_of_origin')
+  kdr = request.GET.get('kdr', 'kdr')
+  headshot = request.GET.get('hsPercent', 'headshot_percentage')
+  fav_weapon = request.GET.get('favWeapon', 'favorite_weapon')
+  best_map = request.GET.get('bestMap', 'best_map')
+  worst_map = request.GET.get('worstMap', 'worst_map')
+  team = Teams.objects.get(team_name=team_name)
+  weapon = Weapons.objects.get(weapon_name=fav_weapon)
+  b_map = Maps.objects.get(map_name=best_map)
+  w_map = Maps.objects.get(map_name=worst_map)
+  new_p = Players(first_name=first,
+                  last_name=last,
+                  gamertag=player_gamertag,
+                  team_name=team,
+                  age=age,
+                  country_of_origin=country,
+                  kdr=kdr,
+                  headshot_percentage=headshot,
+                  favorite_weapon=weapon,
+                  best_map=b_map,
+                  worst_map=w_map)
+  new_p.save()
+  context = {"success": True}
+  data = simplejson.dumps(context)
+  return HttpResponse(data, content_type='application/json')
+
 def delete_player(request):
   gamertag = request.GET.get('gamertag', '')
   player = Players.objects.get(gamertag=gamertag)
   player.delete()
   context = {"success": True}
   data = simplejson.dumps(context)
-  return HttpResponse(data, content_type='application/json')  
+  return HttpResponse(data, content_type='application/json')
