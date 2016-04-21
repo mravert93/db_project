@@ -1,0 +1,40 @@
+This serves as a README for the front-end portion of this project. 
+
+There have been no project deviations from our progress report. We are still using MySQL and Django. 
+
+The db_project folder can be placed anywhere on your machine that you would like. Once this is done, the path structure should be just fine how it is. 
+
+Directories:
+Important files in the app directory include models.py and views.py. 
+
+Models.py contains the various models for our porject including player, team, map, and weapon models. It also includes Django specific models which are not too important to our project. 
+
+Views.py contains all of the different views for our project including player, team, weapon, map, and team_page views. There are also views for the various CRUD operations needed in this project. 
+
+
+Important files in the csgo_project directory include settings.py and urls.py
+
+Settings.py is where the connection to the DB takes place. Line 19 is where your DB password should be entered. It also includes installed apps/libraries that Django uses. 
+
+Urls.py includes the various routings for the project. 
+
+Important files in the template directory include all of them
+
+These are the various template files for each web page
+index.html is the homepage of the website
+players.html is the view for the players table
+teams.html is the view for the teams table
+maps.html is the view for the maps table
+weapons.html is the view for the weapons table
+team_page.html is the view for a specific teams page
+add_players.html posts a player to the page
+
+Important files in the templates/js directory include all of them
+
+addPlayer.js is the js file used by players.html
+maps.js is the js file used by maps.html
+teams.js is the js file used by teams.html
+weapons.js is the js file used by weapons.html
+team.js is the js file used by team_page.html
+
+All of these js files help perform the various crud operations on the system. 
