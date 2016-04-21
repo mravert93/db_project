@@ -11,7 +11,7 @@
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="{% static "addPlayer.js" %}"></script>    
+    <script type="text/javascript" src="{% static "team.js" %}"></script>    
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
@@ -52,7 +52,7 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-8">
-                <h2>{{ team_name }} </h2>
+                <h2 id="teamName">{{ team_name }} </h2>
                 <table class="table table-striped">
                     <thead>
                         <tr>

@@ -190,33 +190,31 @@ def add_team(request):
   return HttpResponse(data, content_type='application/json')
 
 def edit_team(request):
-  first = request.GET.get('first', 'first_name')
-  last = request.GET.get('last', 'last_name')
-  player_gamertag = request.GET.get('gamertag', 'gamertag')
-  team_name = request.GET.get('teamName', 'team_name')
-  age = request.GET.get('age', 'age')
-  country = request.GET.get('country', 'country_of_origin')
-  kdr = request.GET.get('kdr', 'kdr')
-  headshot = request.GET.get('hsPercent', 'headshot_percentage')
-  fav_weapon = request.GET.get('favWeapon', 'favorite_weapon')
-  best_map = request.GET.get('bestMap', 'best_map')
-  worst_map = request.GET.get('worstMap', 'worst_map')
-  team = Teams.objects.get(team_name=team_name)
-  weapon = Weapons.objects.get(weapon_name=fav_weapon)
+  team = request.GET.get('teamName', '')  
+  country = request.GET.get('country', '')
+  rank = request.GET.get('rank', '')
+  region = request.GET.get('region', '')
+  wins = request.GET.get('wins', '')
+  losses = request.GET.get('losses', '')
+  draws = request.GET.get('draws', '')
+  coach_name = request.GET.get('coachName', '')
+  coach_gamertag = request.GET.get('coachGamertag', '')
+  best_map = request.GET.get('bestMap', '')
+  worst_map = request.GET.get('worstMap', '')  
   b_map = Maps.objects.get(map_name=best_map)
   w_map = Maps.objects.get(map_name=worst_map)
-  new_p = Players(first_name=first,
-                  last_name=last,
-                  gamertag=player_gamertag,
-                  team_name=team,
-                  age=age,
+  new_t = Teams(team_name=team,
                   country_of_origin=country,
-                  kdr=kdr,
-                  headshot_percentage=headshot,
-                  favorite_weapon=weapon,
+                  rank=rank,
+                  region=region,
+                  wins=wins,
+                  losses=losses,
+                  draws=draws,
+                  coach_name=coachName,
+                  coach_gamertag=coachGamertag,
                   best_map=b_map,
                   worst_map=w_map)
-  new_p.save()
+  new_t.save()
   context = {"success": True}
   data = simplejson.dumps(context)
   return HttpResponse(data, content_type='application/json')
@@ -248,33 +246,19 @@ def add_map(request):
   return HttpResponse(data, content_type='application/json')
 
 def edit_map(request):
-  first = request.GET.get('first', 'first_name')
-  last = request.GET.get('last', 'last_name')
-  player_gamertag = request.GET.get('gamertag', 'gamertag')
-  team_name = request.GET.get('teamName', 'team_name')
-  age = request.GET.get('age', 'age')
-  country = request.GET.get('country', 'country_of_origin')
-  kdr = request.GET.get('kdr', 'kdr')
-  headshot = request.GET.get('hsPercent', 'headshot_percentage')
-  fav_weapon = request.GET.get('favWeapon', 'favorite_weapon')
-  best_map = request.GET.get('bestMap', 'best_map')
-  worst_map = request.GET.get('worstMap', 'worst_map')
-  team = Teams.objects.get(team_name=team_name)
-  weapon = Weapons.objects.get(weapon_name=fav_weapon)
-  b_map = Maps.objects.get(map_name=best_map)
-  w_map = Maps.objects.get(map_name=worst_map)
-  new_p = Players(first_name=first,
-                  last_name=last,
-                  gamertag=player_gamertag,
-                  team_name=team,
-                  age=age,
-                  country_of_origin=country,
-                  kdr=kdr,
-                  headshot_percentage=headshot,
-                  favorite_weapon=weapon,
-                  best_map=b_map,
-                  worst_map=w_map)
-  new_p.save()
+  map = request.GET.get('mapName', '')  
+  advantage = request.GET.get('advantage', '')
+  pool = request.GET.get('mapPool', '')
+  mode = request.GET.get('gameMode', '')
+  compet = request.GET.get('competitive', '')  
+  new_m = Maps(map_name=map,
+                  advantage=advantage,
+                  map_pool=pool,
+                  game_mode=mode,
+                  competitive=compet,
+                  losses=losses
+                  )
+  new_m.save()
   context = {"success": True}
   data = simplejson.dumps(context)
   return HttpResponse(data, content_type='application/json')
@@ -308,33 +292,21 @@ def add_weapon(request):
   return HttpResponse(data, content_type='application/json')
 
 def edit_weapon(request):
-  first = request.GET.get('first', 'first_name')
-  last = request.GET.get('last', 'last_name')
-  player_gamertag = request.GET.get('gamertag', 'gamertag')
-  team_name = request.GET.get('teamName', 'team_name')
-  age = request.GET.get('age', 'age')
-  country = request.GET.get('country', 'country_of_origin')
-  kdr = request.GET.get('kdr', 'kdr')
-  headshot = request.GET.get('hsPercent', 'headshot_percentage')
-  fav_weapon = request.GET.get('favWeapon', 'favorite_weapon')
-  best_map = request.GET.get('bestMap', 'best_map')
-  worst_map = request.GET.get('worstMap', 'worst_map')
-  team = Teams.objects.get(team_name=team_name)
-  weapon = Weapons.objects.get(weapon_name=fav_weapon)
-  b_map = Maps.objects.get(map_name=best_map)
-  w_map = Maps.objects.get(map_name=worst_map)
-  new_p = Players(first_name=first,
-                  last_name=last,
-                  gamertag=player_gamertag,
-                  team_name=team,
-                  age=age,
-                  country_of_origin=country,
-                  kdr=kdr,
-                  headshot_percentage=headshot,
-                  favorite_weapon=weapon,
-                  best_map=b_map,
-                  worst_map=w_map)
-  new_p.save()
+  name = request.GET.get('weaponName', '')  
+  weaponClass = request.GET.get('weaponClass', '')
+  price = request.GET.get('price', '')
+  magazineSize = request.GET.get('magazineSize', '')
+  bullets = request.GET.get('totalBullets', '')
+  firingModes = request.GET.get('firingModes', '') 
+  usedBy = request.GET.get('usedBy', '')   
+  new_w = Weapons(weapon_name=name,
+                  weapon_class=weaponClass,
+                  price=price,
+                  magazine_size=magazineSize,
+                  total_bullets=bullets,
+                  firing_modes=firingModes,
+                  used_by=usedBy)
+  new_w.save()
   context = {"success": True}
   data = simplejson.dumps(context)
   return HttpResponse(data, content_type='application/json')

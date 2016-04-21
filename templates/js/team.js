@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     addButt = $('#okClass')
     firstName = $('#firstName')
     lastName = $('#lastName')
@@ -44,18 +44,18 @@ $(document).ready(function () {
     });
 
     $('.edit').on('click', function () {
-        $('#addPlayerModal').modal("show")        
+        $('#addPlayerModal').modal("show")
         $("input#firstName").val($(this).closest('tr').children('td:eq(0)').text());
         $("input#lastName").val($(this).closest('tr').children('td:eq(1)').text());
         $("input#playerGamertag").val($(this).closest('tr').children('td:eq(2)').text());
-        $("input#teamName").val($(this).closest('tr').children('td:eq(3)').text());
-        $("input#age").val($(this).closest('tr').children('td:eq(4)').text());
-        $("input#countryOfOrigin").val($(this).closest('tr').children('td:eq(5)').text());
-        $("input#kdr").val($(this).closest('tr').children('td:eq(6)').text());
-        $("input#headshotPercentage").val($(this).closest('tr').children('td:eq(7)').text());
-        $("input#favoriteWeapon").val($(this).closest('tr').children('td:eq(8)').text());
-        $("input#playerBestMap").val($(this).closest('tr').children('td:eq(9)').text());
-        $("input#playerWorstMap").val($(this).closest('tr').children('td:eq(10)').text());
+        $("input#teamName").val(document.getElementById("teamName").innerHTML);
+        $("input#age").val($(this).closest('tr').children('td:eq(3)').text());
+        $("input#countryOfOrigin").val($(this).closest('tr').children('td:eq(4)').text());
+        $("input#kdr").val($(this).closest('tr').children('td:eq(5)').text());
+        $("input#headshotPercentage").val($(this).closest('tr').children('td:eq(6)').text());
+        $("input#favoriteWeapon").val($(this).closest('tr').children('td:eq(7)').text());
+        $("input#playerBestMap").val($(this).closest('tr').children('td:eq(8)').text());
+        $("input#playerWorstMap").val($(this).closest('tr').children('td:eq(9)').text());
         //$("input#firstName").val(firstName);
         /*lastName = $(this).closest('tr').children('td:eq(1)').text()
         gamertag = $(this).closest('tr').children('td:eq(2)').text()
