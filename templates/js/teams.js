@@ -44,41 +44,41 @@
     });
 
     $('.edit').on('click', function () {
-        $('#addPlayerModal').modal("show");
-        firstName = $(this).closest('tr').children('td:eq(0)').text();
-        lastName = $(this).closest('tr').children('td:eq(1)').text();
-        gamertag = $(this).closest('tr').children('td:eq(2)').text();
-        teamName = $(this).closest('tr').children('td:eq(3)').text();
-        age = $(this).closest('tr').children('td:eq(4)').text();
-        country = $(this).closest('tr').children('td:eq(5)').text();
-        kdr = $(this).closest('tr').children('td:eq(6)').text();
-        hsPercent = $(this).closest('tr').children('td:eq(7)').text();
-        favWeapon = $(this).closest('tr').children('td:eq(8)').text();
-        bestMap = $(this).closest('tr').children('td:eq(9)').text();
-        worstMap = $(this).closest('tr').children('td:eq(10)').text();
+        $('#addTeamModal').modal("show");
+        $("input#teamName").val($(this).closest('tr').children('td:eq(0)').text());
+        $("input#countryOfOrigin").val($(this).closest('tr').children('td:eq(1)').text());
+        $("input#rank").val($(this).closest('tr').children('td:eq(2)').text());
+        $("input#region").val($(this).closest('tr').children('td:eq(3)').text());
+        $("input#wins").val($(this).closest('tr').children('td:eq(4)').text());
+        $("input#losses").val($(this).closest('tr').children('td:eq(5)').text());
+        $("input#draws").val($(this).closest('tr').children('td:eq(6)').text());
+        $("input#coachName").val($(this).closest('tr').children('td:eq(7)').text());
+        $("input#coachGamertag").val($(this).closest('tr').children('td:eq(8)').text());
+        $("input#teamBestMap").val($(this).closest('tr').children('td:eq(9)').text());
+        $("input#teamWorstMap").val($(this).closest('tr').children('td:eq(10)').text());        
     });
 
 
     //editButt = $('#addPlayer')
     addButt.click(function () {
-        updatedPlayer = {
-            "first": firstName.val(),
-            "last": lastName.val(),
-            "gamertag": gamertag.val(),
-            "teamName": teamName.val(),
-            "age": age.val(),
-            "country": country.val(),
-            "kdr": kdr.val(),
-            "hsPercent": hsPercent.val(),
-            "favWeapon": favWeapon.val(),
-            "bestMap": bestMap.val(),
-            "worstMap": worstMap.val()
+        updatedTeam = {
+            "teamName": $("input#teamName").val(),
+            "country": $("input#countryOfOrigin").val(),
+            "rank": $("input#rank").val(),
+            "region": $("input#region").val(),
+            "wins": $("input#wins").val(),
+            "losses": $("input#losses").val(),
+            "draws": $("input#draws").val(),
+            "coachName": $("input#coachName").val(),
+            "coachGamertag": $("input#coachGamertag").val(),
+            "bestMap": $("input#teamBestMap").val(),
+            "worstMap": $("input#teamWorstMap").val()
         };
-        console.log(updatedPlayer);
+        console.log(updatedTeam);
         $.ajax({
-            url: "/edit_player",
+            url: "/edit_team",
             type: "get",
-            data: updatedPlayer,
+            data: updatedTeam,
             dataType: "json",
             contentType: "text/plain",
             success: function (data) {

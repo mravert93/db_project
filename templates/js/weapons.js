@@ -36,41 +36,33 @@
     });
 
     $('.edit').on('click', function () {
-        $('#addPlayerModal').modal("show");
-        firstName = $(this).closest('tr').children('td:eq(0)').text();
-        lastName = $(this).closest('tr').children('td:eq(1)').text();
-        gamertag = $(this).closest('tr').children('td:eq(2)').text();
-        teamName = $(this).closest('tr').children('td:eq(3)').text();
-        age = $(this).closest('tr').children('td:eq(4)').text();
-        country = $(this).closest('tr').children('td:eq(5)').text();
-        kdr = $(this).closest('tr').children('td:eq(6)').text();
-        hsPercent = $(this).closest('tr').children('td:eq(7)').text();
-        favWeapon = $(this).closest('tr').children('td:eq(8)').text();
-        bestMap = $(this).closest('tr').children('td:eq(9)').text();
-        worstMap = $(this).closest('tr').children('td:eq(10)').text();
+        $('#addWeaponModal').modal("show");
+        $("input#weaponName").val($(this).closest('tr').children('td:eq(0)').text());
+        $("input#weaponClass").val($(this).closest('tr').children('td:eq(1)').text());
+        $("input#price").val($(this).closest('tr').children('td:eq(2)').text());
+        $("input#magazineSize").val($(this).closest('tr').children('td:eq(3)').text());
+        $("input#totalBullets").val($(this).closest('tr').children('td:eq(4)').text());
+        $("input#firingModes").val($(this).closest('tr').children('td:eq(5)').text());
+        $("input#usedBy").val($(this).closest('tr').children('td:eq(6)').text());        
     });
 
 
     //editButt = $('#addPlayer')
     addButt.click(function () {
-        updatedPlayer = {
-            "first": firstName.val(),
-            "last": lastName.val(),
-            "gamertag": gamertag.val(),
-            "teamName": teamName.val(),
-            "age": age.val(),
-            "country": country.val(),
-            "kdr": kdr.val(),
-            "hsPercent": hsPercent.val(),
-            "favWeapon": favWeapon.val(),
-            "bestMap": bestMap.val(),
-            "worstMap": worstMap.val()
+        updatedWeapon = {
+            "weaponName": $("input#weaponName").val(),
+            "weaponClass": $("input#weaponClass").val(),
+            "price": $("input#price").val(),
+            "magazineSize": $("input#magazineSize").val(),
+            "totalBullets": $("input#totalBullets").val(),
+            "firingModes": $("input#firingModes").val(),
+            "usedBy": $("input#usedBy").val()
         };
-        console.log(updatedPlayer);
+        console.log(updatedWeapon);
         $.ajax({
             url: "/edit_weapon",
             type: "get",
-            data: updatedPlayer,
+            data: updatedWeapon,
             dataType: "json",
             contentType: "text/plain",
             success: function (data) {

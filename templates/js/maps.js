@@ -32,41 +32,29 @@
     });
 
     $('.edit').on('click', function () {
-        $('#addPlayerModal').modal("show");
-        firstName = $(this).closest('tr').children('td:eq(0)').text();
-        lastName = $(this).closest('tr').children('td:eq(1)').text();
-        gamertag = $(this).closest('tr').children('td:eq(2)').text();
-        teamName = $(this).closest('tr').children('td:eq(3)').text();
-        age = $(this).closest('tr').children('td:eq(4)').text();
-        country = $(this).closest('tr').children('td:eq(5)').text();
-        kdr = $(this).closest('tr').children('td:eq(6)').text();
-        hsPercent = $(this).closest('tr').children('td:eq(7)').text();
-        favWeapon = $(this).closest('tr').children('td:eq(8)').text();
-        bestMap = $(this).closest('tr').children('td:eq(9)').text();
-        worstMap = $(this).closest('tr').children('td:eq(10)').text();
+        $('#addMapModal').modal("show");
+        $("input#mapName").val($(this).closest('tr').children('td:eq(0)').text());
+        $("input#advantage").val($(this).closest('tr').children('td:eq(1)').text());
+        $("input#mapPool").val($(this).closest('tr').children('td:eq(2)').text());
+        $("input#gameMode").val($(this).closest('tr').children('td:eq(3)').text());
+        $("input#competitive").val($(this).closest('tr').children('td:eq(4)').text());        
     });
 
 
     //editButt = $('#addPlayer')
     addButt.click(function () {
-        updatedPlayer = {
-            "first": firstName.val(),
-            "last": lastName.val(),
-            "gamertag": gamertag.val(),
-            "teamName": teamName.val(),
-            "age": age.val(),
-            "country": country.val(),
-            "kdr": kdr.val(),
-            "hsPercent": hsPercent.val(),
-            "favWeapon": favWeapon.val(),
-            "bestMap": bestMap.val(),
-            "worstMap": worstMap.val()
+        updatedMap = {
+            "mapName": $("input#mapName").val(),
+            "advantage": $("input#advantage").val(),
+            "mapPool": $("input#mapPool").val(),
+            "gameMode": $("input#gameMode").val(),
+            "competitive": $("input#competitive").val()
         };
-        console.log(updatedPlayer);
+        console.log(updatedMap);
         $.ajax({
-            url: "/edit_player",
+            url: "/edit_map",
             type: "get",
-            data: updatedPlayer,
+            data: updatedMap,
             dataType: "json",
             contentType: "text/plain",
             success: function (data) {
