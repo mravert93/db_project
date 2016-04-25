@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     addButt = $('#okClass')
-    name = $('#weaponName')
+    wName = $('#weaponName')
     wClass = $('#weaponClass')
     price = $('#price')
     magSize = $('#magazineSize')
@@ -9,11 +9,11 @@
     usedBy = $('#usedBy')    
     addButt.click(function () {
         newPlayer = {
-            "name": name.val(),
+            "weaponName": wName.val(),
             "weaponClass": wClass.val(),
             "price": price.val(),
             "magazineSize": magSize.val(),
-            "bullets": bullets.val(),
+            "totalBullets": bullets.val(),
             "firingModes": modes.val(),
             "usedBy": usedBy.val()            
         };
@@ -46,8 +46,6 @@
         $("input#usedBy").val($(this).closest('tr').children('td:eq(6)').text());        
     });
 
-
-    //editButt = $('#addPlayer')
     addButt.click(function () {
         updatedWeapon = {
             "weaponName": $("input#weaponName").val(),

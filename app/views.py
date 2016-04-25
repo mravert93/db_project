@@ -11,7 +11,7 @@ def index(request):
   return HttpResponse(template.render(data))
 
 def maps(request):
-  all_entries = list(Maps.objects.all())
+  all_entries = list(Maps.objects.exclude(map_name__exact=''))
   context = {}
   context['maps'] = all_entries
   template = loader.get_template('maps.html')
@@ -92,10 +92,10 @@ def add_player(request):
   last = request.GET.get('last', '')
   player_gamertag = request.GET.get('gamertag', '')
   team_name = request.GET.get('teamName', '')
-  age = request.GET.get('age', '')
+  age = request.GET.get('age', 0)
   country = request.GET.get('country', '')
-  kdr = request.GET.get('kdr', '')
-  headshot = request.GET.get('hsPercent', '')
+  kdr = request.GET.get('kdr', 0.00)
+  headshot = request.GET.get('hsPercent', 0.00)
   fav_weapon = request.GET.get('favWeapon', '')
   best_map = request.GET.get('bestMap', '')
   worst_map = request.GET.get('worstMap', '')
@@ -124,10 +124,10 @@ def edit_player(request):
   last = request.GET.get('last', 'last_name')
   player_gamertag = request.GET.get('gamertag', 'gamertag')
   team_name = request.GET.get('teamName', 'team_name')
-  age = request.GET.get('age', 'age')
+  age = request.GET.get('age', 0)
   country = request.GET.get('country', 'country_of_origin')
-  kdr = request.GET.get('kdr', 'kdr')
-  headshot = request.GET.get('hsPercent', 'headshot_percentage')
+  kdr = request.GET.get('kdr', 0.00)
+  headshot = request.GET.get('hsPercent', 0.00)
   fav_weapon = request.GET.get('favWeapon', 'favorite_weapon')
   best_map = request.GET.get('bestMap', 'best_map')
   worst_map = request.GET.get('worstMap', 'worst_map')
@@ -162,11 +162,11 @@ def delete_player(request):
 def add_team(request):  
   team = request.GET.get('teamName', '')  
   country = request.GET.get('country', '')
-  rank = request.GET.get('rank', '')
+  rank = request.GET.get('rank', 0)
   region = request.GET.get('region', '')
-  wins = request.GET.get('wins', '')
-  losses = request.GET.get('losses', '')
-  draws = request.GET.get('draws', '')
+  wins = request.GET.get('wins', 0)
+  losses = request.GET.get('losses', 0)
+  draws = request.GET.get('draws', 0)
   coach_name = request.GET.get('coachName', '')
   coach_gamertag = request.GET.get('coachGamertag', '')
   best_map = request.GET.get('bestMap', '')
@@ -192,11 +192,11 @@ def add_team(request):
 def edit_team(request):
   team = request.GET.get('teamName', '')  
   country = request.GET.get('country', '')
-  rank = request.GET.get('rank', '')
+  rank = request.GET.get('rank', 0)
   region = request.GET.get('region', '')
-  wins = request.GET.get('wins', '')
-  losses = request.GET.get('losses', '')
-  draws = request.GET.get('draws', '')
+  wins = request.GET.get('wins', 0)
+  losses = request.GET.get('losses', 0)
+  draws = request.GET.get('draws', 0)
   coach_name = request.GET.get('coachName', '')
   coach_gamertag = request.GET.get('coachGamertag', '')
   best_map = request.GET.get('bestMap', '')
@@ -210,8 +210,8 @@ def edit_team(request):
                   wins=wins,
                   losses=losses,
                   draws=draws,
-                  coach_name=coachName,
-                  coach_gamertag=coachGamertag,
+                  coach_name=coach_name,
+                  coach_gamertag=coach_gamertag,
                   best_map=b_map,
                   worst_map=w_map)
   new_t.save()
@@ -237,8 +237,7 @@ def add_map(request):
                   advantage=advantage,
                   map_pool=pool,
                   game_mode=mode,
-                  competitive=compet,
-                  losses=losses
+                  competitive=compet
                   )
   new_m.save()
   context = {"success": True}
@@ -255,8 +254,7 @@ def edit_map(request):
                   advantage=advantage,
                   map_pool=pool,
                   game_mode=mode,
-                  competitive=compet,
-                  losses=losses
+                  competitive=compet
                   )
   new_m.save()
   context = {"success": True}
@@ -274,9 +272,9 @@ def delete_map(request):
 def add_weapon(request):  
   name = request.GET.get('weaponName', '')  
   weaponClass = request.GET.get('weaponClass', '')
-  price = request.GET.get('price', '')
-  magazineSize = request.GET.get('magazineSize', '')
-  bullets = request.GET.get('totalBullets', '')
+  price = request.GET.get('price', 0)
+  magazineSize = request.GET.get('magazineSize', 0)
+  bullets = request.GET.get('totalBullets', 0)
   firingModes = request.GET.get('firingModes', '') 
   usedBy = request.GET.get('usedBy', '')   
   new_w = Weapons(weapon_name=name,
@@ -294,9 +292,9 @@ def add_weapon(request):
 def edit_weapon(request):
   name = request.GET.get('weaponName', '')  
   weaponClass = request.GET.get('weaponClass', '')
-  price = request.GET.get('price', '')
-  magazineSize = request.GET.get('magazineSize', '')
-  bullets = request.GET.get('totalBullets', '')
+  price = request.GET.get('price', 0)
+  magazineSize = request.GET.get('magazineSize', 0)
+  bullets = request.GET.get('totalBullets', 0)
   firingModes = request.GET.get('firingModes', '') 
   usedBy = request.GET.get('usedBy', '')   
   new_w = Weapons(weapon_name=name,

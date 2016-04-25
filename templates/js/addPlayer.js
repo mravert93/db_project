@@ -17,10 +17,10 @@ $(document).ready(function () {
             "last": lastName.val(),
             "gamertag": gamertag.val(),
             "teamName": teamName.val(),
-            "age": age.val(),
+            "age": age.val() === "" ? 0 : age.val(),
             "country": country.val(),
-            "kdr": kdr.val(),
-            "hsPercent": hsPercent.val(),
+            "kdr": kdr.val() === "" ? 0.00 : kdr.val(),
+            "hsPercent": hsPercent.val() === "" ? 0.00 : hsPercent.val(),
             "favWeapon": favWeapon.val(),
             "bestMap": bestMap.val(),
             "worstMap": worstMap.val()
@@ -56,31 +56,18 @@ $(document).ready(function () {
         $("input#favoriteWeapon").val($(this).closest('tr').children('td:eq(8)').text());
         $("input#playerBestMap").val($(this).closest('tr').children('td:eq(9)').text());
         $("input#playerWorstMap").val($(this).closest('tr').children('td:eq(10)').text());
-        //$("input#firstName").val(firstName);
-        /*lastName = $(this).closest('tr').children('td:eq(1)').text()
-        gamertag = $(this).closest('tr').children('td:eq(2)').text()
-        teamName = $(this).closest('tr').children('td:eq(3)').text()
-        age = $(this).closest('tr').children('td:eq(4)').text()
-        country = $(this).closest('tr').children('td:eq(5)').text()
-        kdr = $(this).closest('tr').children('td:eq(6)').text()
-        hsPercent = $(this).closest('tr').children('td:eq(7)').text()
-        favWeapon = $(this).closest('tr').children('td:eq(8)').text()
-        bestMap = $(this).closest('tr').children('td:eq(9)').text()
-        worstMap = $(this).closest('tr').children('td:eq(10)').text()*/
     });
 
-
-    //editButt = $('#addPlayer')
     addButt.click(function () {
         updatedPlayer = {
             "first": $("input#firstName").val(),
             "last": $("input#lastName").val(),
             "gamertag": $("input#playerGamertag").val(),
             "teamName": $("input#teamName").val(),
-            "age": $("input#age").val(),
+            "age": $("input#age").val() === "" ? 0 : $("input#age").val(),
             "country": $("input#countryOfOrigin").val(),
-            "kdr": $("input#kdr").val(),
-            "hsPercent": $("input#headshotPercentage").val(),
+            "kdr": $("input#kdr").val() === "" ? 0.00 : $("input#kdr").val(),
+            "hsPercent": $("input#headshotPercentage").val() === "" ? 0.00 : $("input#headshotPercentage").val(),
             "favWeapon": $("input#favoriteWeapon").val(),
             "bestMap": $("input#playerBestMap").val(),
             "worstMap": $("input#playerWorstMap").val()

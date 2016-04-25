@@ -13,15 +13,15 @@
     worstMap = $('#teamWorstMap')
     addButt.click(function () {
         newTeam = {
-            "team": teamName.val(),
+            "teamName": teamName.val(),
             "country": country.val(),
-            "rank": rank.val(),
+            "rank": rank.val() === "" ? 0 : rank.val(),
             "region": region.val(),
-            "wins": wins.val(),
-            "losses": losses.val(),
-            "draws": draws.val(),
-            "coach_name": coachName.val(),
-            "coach_gamertag": coachGamertag.val(),
+            "wins": wins.val() === "" ? 0 : wins.val(),
+            "losses": losses.val() === "" ? 0 : losses.val(),
+            "draws": draws.val() === "" ? 0 : draws.val(),
+            "coachName": coachName.val(),
+            "coachGamertag": coachGamertag.val(),
             "bestMap": bestMap.val(),
             "worstMap": worstMap.val()
         };
@@ -58,17 +58,15 @@
         $("input#teamWorstMap").val($(this).closest('tr').children('td:eq(10)').text());        
     });
 
-
-    //editButt = $('#addPlayer')
     addButt.click(function () {
         updatedTeam = {
             "teamName": $("input#teamName").val(),
             "country": $("input#countryOfOrigin").val(),
-            "rank": $("input#rank").val(),
+            "rank": $("input#rank").val() === "" ? 0 : $("input#rank").val(),
             "region": $("input#region").val(),
-            "wins": $("input#wins").val(),
-            "losses": $("input#losses").val(),
-            "draws": $("input#draws").val(),
+            "wins": $("input#wins").val() === "" ? 0 : $("input#wins").val(),
+            "losses": $("input#losses").val() === "" ? 0 : $("input#losses").val(),
+            "draws": $("input#draws").val() === "" ? 0 : $("input#draws").val(),
             "coachName": $("input#coachName").val(),
             "coachGamertag": $("input#coachGamertag").val(),
             "bestMap": $("input#teamBestMap").val(),
